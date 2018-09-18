@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isEnemyShot: 0
+  life: 100
 --- !u!114 &114965392828821394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 15, y: 15}
   direction: {x: 1, y: 0}
+  shouldMove: 1
 --- !u!212 &212305887629021374
 SpriteRenderer:
   m_ObjectHideFlags: 1

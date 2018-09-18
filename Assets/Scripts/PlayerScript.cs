@@ -40,6 +40,10 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.F)) {
+            FreezeTimeScript.FreezeTime();
+        }
+
         // 6 - Make sure we are not outside the camera bounds
         var dist = (transform.position - Camera.main.transform.position).z;
 
@@ -88,7 +92,13 @@ public class PlayerScript : MonoBehaviour
             if (enemyHealth != null) enemyHealth.Damage(enemyHealth.hp);
 
             damagePlayer = true;
+        } else {
+            RedPoulpi redPoulpi = collision.gameObject.GetComponent<RedPoulpi>();
+            if (redPoulpi != null) {
+                damagePlayer = true;
+            }
         }
+        
 
         // Damage the player
         if (damagePlayer)

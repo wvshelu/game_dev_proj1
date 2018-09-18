@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour {
 
-    public Transform poulpi;
+    public GameObject poulpi;
+    public GameObject redpoulpi;
     private int delay;
     private float height;
     private bool gameOver;
@@ -23,11 +24,15 @@ public class SpawnerScript : MonoBehaviour {
             return;
         }
         if (delay < 0) {
-            Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(1.1f, Random.Range(0.2f, 0.8f), 5f)); 
-            delay = Random.Range(40, 60);
-            for (int i = delay / 20; i > 0; i--) {
-                Transform gc = Instantiate(poulpi, v3Pos, Quaternion.identity) as Transform;
+            if (Random.Range(1, 10) < 9) {
+                Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(1.1f, Random.Range(0.1f, 0.9f), 5f));
+                delay = Random.Range(40, 60);
+                Instantiate(poulpi.transform, v3Pos, Quaternion.identity);
+            } else {
+                Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(0.95f, Random.Range(0.1f, 0.9f), 5f));
+                Instantiate(redpoulpi.transform, v3Pos, Quaternion.identity);
             }
+
         } else {
             delay--;
         }
@@ -35,6 +40,10 @@ public class SpawnerScript : MonoBehaviour {
 
     public void GameOver() {
         gameOver = true;
+    }
+
+    public bool GetGameOver() {
+        return gameOver;
     }
 
     public static SpawnerScript GetSingleton() {

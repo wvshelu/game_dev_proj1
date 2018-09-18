@@ -53,13 +53,15 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            // Auto-fire
-            foreach (WeaponScript weapon in weapons)
-            {
-                if (weapon != null && weapon.enabled && weapon.CanAttack)
+            if (!FreezeTimeScript.GetFrozen()) {
+                // Auto-fire
+                foreach (WeaponScript weapon in weapons)
                 {
-                    weapon.Attack(true);
-                    SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                    if (weapon != null && weapon.enabled && weapon.CanAttack)
+                    {
+                        weapon.Attack(true);
+                        SoundEffectsHelper.Instance.MakeEnemyShotSound();
+                    }
                 }
             }
 

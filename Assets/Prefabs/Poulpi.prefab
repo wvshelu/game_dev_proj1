@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 10, y: 10}
   direction: {x: -1, y: 0}
+  shouldMove: 0
 --- !u!212 &212111329303834558
 SpriteRenderer:
   m_ObjectHideFlags: 1

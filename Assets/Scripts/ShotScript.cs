@@ -16,9 +16,23 @@ public class ShotScript : MonoBehaviour {
     /// </summary>
     public bool isEnemyShot = false;
 
+    private int life;
+
     void Start()
     {
         // 2 - Limited time to live to avoid any leak
-        Destroy(gameObject, 5); // 20sec
+        //Destroy(gameObject, 5); // 20sec
+        life = 100;
     }
+
+    void Update()
+    {
+        if (life < 0) {
+            Destroy(gameObject);
+        }
+        if (!FreezeTimeScript.GetFrozen()) {
+            life--;
+        }
+    }
+
 }
